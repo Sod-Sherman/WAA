@@ -11,11 +11,13 @@ public class Database {
 		users.put("Dave", "111");
 		users.put("Steve", "222");
 		users.put("Ralph", "333");
+
 		ArrayList<String> darkList = new ArrayList<String>();
 		darkList.add("Sumatra");
 		darkList.add("Verona");
 		darkList.add("French Roast");
 		advice.put("dark", darkList);
+
 		ArrayList<String> medList = new ArrayList<String>();
 		medList.add("Breakfast Blend");
 		medList.add("Colombia");
@@ -23,6 +25,7 @@ public class Database {
 		medList.add("Pike Place");
 		medList.add("House Blend");
 		advice.put("medium", medList);
+
 		ArrayList<String> lightList = new ArrayList<String>();
 		lightList.add("Willow");
 		lightList.add("Aria");

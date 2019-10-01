@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,42 +37,22 @@ public class AdviceServlet extends HttpServlet {
 		
   		DataFacade data = (DataFacade) getServletContext().getAttribute("dataSource");
 		List<String> advice = data.getAdvice(roast);
-		String adviceOutput = prepareAdviceOutput(roast, advice);
-		
-		response.setContentType("text/html");
-		response.setHeader("Cache-Control", "no-cache");
-		PrintWriter writer = response.getWriter();
-		writer.println(adviceOutput);
+		request.setAttribute("ask", false);
+		request.setAttribute("roast", roast);
+		request.setAttribute("items", advice);
+
+		RequestDispatcher rd = request.getRequestDispatcher("../WEB-INF/display.jsp");
+		rd.forward(request,response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request,response);
 	}
 	
-	private String prepareAdviceOutput(String roast, List<String> advice) {
-			
-		StringBuilder sb = new StringBuilder();
-		sb.append("<!DOCTYPE html>\n");
-		sb.append("<html><head> </head>\n");
-		sb.append("<body><form action=\"../action/login\" method=\"get\">\n");
-		
-		sb.append("Starbuck's " + roast.toUpperCase() + " Roast Coffees:");
-		
-		sb.append("<table>\n");
-		for( int i=0;i<advice.size();i++) {
-			if (i%2 == 0)  sb.append("<tr style=\"background-color:cyan\">");
-			else sb.append("<tr style=\"background-color:yellow\">");
- 
-			sb.append("<td>" + advice.get(i) + "</td></tr>\n");
- 
-		}
-		sb.append("</table>\n");
 
-		sb.append("<input type=\"submit\" value=\"Back\">\n");
-		sb.append("</body></html>");
-		return sb.toString();
-	}
 
 }
