@@ -34,19 +34,22 @@ public class CalculatorController extends HttpServlet {
         String add2 = request.getParameter("add2").trim();
         String mult1 = request.getParameter("mult1").trim();
         String mult2 = request.getParameter("mult2").trim();
-
-        OurNumber ourNumberForAdding = new OurNumber(Double.parseDouble(add1), Double.parseDouble(add2));
-        OurNumber ourNumberForMultiply = new OurNumber(Double.parseDouble(mult1), Double.parseDouble(mult2));
+        try {
 
 
-
-        request.setAttribute("ourNumberForAdding", ourNumberForAdding);
-        request.setAttribute("ourNumberForMultiply", ourNumberForMultiply);
-
+            OurNumber ourNumberForAdding = new OurNumber(Double.parseDouble(add1), Double.parseDouble(add2));
+            OurNumber ourNumberForMultiply = new OurNumber(Double.parseDouble(mult1), Double.parseDouble(mult2));
 
 
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/calculator.jsp");
-		rd.forward(request,response);
+            request.setAttribute("ourNumberForAdding", ourNumberForAdding);
+            request.setAttribute("ourNumberForMultiply", ourNumberForMultiply);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/calculator.jsp");
+        rd.forward(request, response);
     }
 
     /**
