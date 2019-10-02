@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class ValidatorImpl implements Validator {
-    private final static String DOUBLE_PATTERN = "[0-9]+(\\.){0,1}[0-9]*";
+    private final static String DOUBLE_PATTERN = "-?[0-9]+(\\.){0,1}[0-9]*";
 
     @Override
     public List<String> validate(Object domainObject) {
