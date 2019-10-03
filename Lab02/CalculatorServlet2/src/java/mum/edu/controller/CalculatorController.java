@@ -9,7 +9,7 @@ import mum.edu.validator.Validator;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@mum.edu.framework.annotation.Controller
+@Controller
 public class CalculatorController {
 
     @AutoWired
