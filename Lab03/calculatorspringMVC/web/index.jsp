@@ -7,10 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-<a href="calculate">click here</a>
-  </body>
+</head>
+<body>
+<p><a href="calculate">click here to see Spring MVC <strong>calculator</strong></a></p>
+<p><a href="login">click here to see Spring MVC <strong>Starbucks</strong></a></p>
+</body>
 </html>
