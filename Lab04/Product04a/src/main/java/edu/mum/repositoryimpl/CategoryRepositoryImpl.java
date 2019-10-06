@@ -15,7 +15,7 @@ import edu.mum.repository.CategoryRepository;
  	    
 	    public CategoryRepositoryImpl() {
 	        categories = new ArrayList<Category>();
-	        Category computerCategory = new Category(1, "Computer");
+	        Category computerCategory = new Category(1, "Ком");
 	        Category sportsCategory = new Category(2, "Sports");
 	        Category foodCategory = new Category(3, "Food");
 	        categories.add(computerCategory);
