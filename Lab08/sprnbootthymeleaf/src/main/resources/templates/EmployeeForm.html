@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Add Employee Form</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+
+<div id="global">
+    <!--		<form:form modelAttribute="employee" action="employee_save" method="post">-->
+    <form th:object="${employee}" th:action="@{/employee_save}" method="post">
+        <fieldset>
+            <legend><span th:text="#{employee.form.title}">Add a Employee</span></legend>
+            <ul th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
+                    is incorrect
+                </li>
+            </ul>
+            <p>
+                <label for="id">ID </label>
+                <input name="id" id="id"/>
+            </p>
+
+
+            <p>
+                <label for="firstName"><span th:text="#{employee.form.firstName}">First Name </span></label>
+                <input name="firstName" id="firstName"/><br/>
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                   th:errorclass="fieldError">Invalid input</span>
+
+            </p>
+
+            <p>
+                <label for="lastName" th:text="#{employee.form.lastName}">Last Name </label>
+                <input name="lastName" id="lastName"/>
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+
+            <p>
+                <label for="birthDate">Date Of Birth: </label>
+                <input name="birthDate" type="date" id="birthDate"/>
+                <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+            <p>
+                <label for="salaryLevel">Salary: </label>
+                <input name="salaryLevel" id="salaryLevel"/>
+                <span th:if="${#fields.hasErrors('salaryLevel')}" th:errors="*{salaryLevel}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+            <h4>Address:</h4>
+            <p>
+                <label for="street">Street: </label>
+                <input name="address.street" id="street"/>
+                <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+            <p>
+                <label for="state">State: </label>
+                <input name="address.state" id="state"/>
+                <span th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+            <p>
+                <label for="zipCode">Zip: </label>
+                <input name="address.zipCode" id="zipCode"/>
+                <span th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}"
+                   th:errorclass="fieldError">Invalid input</span>
+            </p>
+            <p id="buttons">
+                <input id="reset" type="reset" tabindex="4">
+                <input id="submit" type="submit" tabindex="5" value="Add Employee">
+            </p>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
